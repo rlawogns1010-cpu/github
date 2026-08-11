@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/png;base64,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">
+<title>JB자산운용</title>
+<style>
+  :root{
+    --ink:#1d1d1f;
+    --sub:#6e6e73;
+    --link:#0071e3;
+    --gray:#f5f5f7;
+    --line:#d2d2d7;
+    --jb:#0067b6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"SF Pro Display","SF Pro Text",-apple-system,BlinkMacSystemFont,
+                "Apple SD Gothic Neo","Pretendard","Malgun Gothic",sans-serif;
+    color:var(--ink);background:#fff;
+    -webkit-font-smoothing:antialiased;letter-spacing:-.01em;
+  }
+  a{color:inherit;text-decoration:none}
+  .w{max-width:980px;margin:0 auto;padding:0 22px}
+  .wide{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:9999;height:48px;
+    background:rgba(0,0,0,.8);backdrop-filter:saturate(180%) blur(20px);
+  }
+  nav .in{
+    max-width:1024px;margin:0 auto;height:48px;padding:0 22px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  nav a{color:#f5f5f7;font-size:12px;opacity:.88;transition:opacity .2s}
+  nav a:hover{opacity:1}
+  nav .brand{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;opacity:1}
+  nav .brand img{width:19px;height:19px;border-radius:2px;display:block}
+  nav .links{display:flex;gap:34px}
+
+  /* ---------- Section base ---------- */
+  .sec{padding:100px 0;text-align:center}
+  .sec.gray{background:var(--gray)}
+  .sec.dark{background:#000;color:#f5f5f7}
+  .sec.dark .lead{color:#a1a1a6}
+
+  h1{font-size:80px;line-height:1.05;font-weight:700;letter-spacing:-.025em}
+  h2{font-size:56px;line-height:1.07;font-weight:700;letter-spacing:-.022em}
+  h3{font-size:32px;line-height:1.12;font-weight:700;letter-spacing:-.02em}
+  .kicker{font-size:19px;font-weight:600;color:var(--jb);margin-bottom:10px}
+  .lead{font-size:21px;line-height:1.5;color:var(--sub);margin-top:18px;
+        max-width:680px;margin-left:auto;margin-right:auto;font-weight:400}
+  .grad{background:linear-gradient(90deg,#0067b6,#41a5e8 55%,#6bc4f5);
+        -webkit-background-clip:text;background-clip:text;color:transparent}
+
+  .links-row{margin-top:26px;display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
+  .lnk{color:var(--link);font-size:19px}
+  .lnk:hover{text-decoration:underline}
+  .lnk:after{content:" \203A"}
+  .btn{
+    display:inline-block;background:var(--link);color:#fff;border-radius:980px;
+    padding:12px 24px;font-size:17px;font-weight:400;
+  }
+  .btn:hover{background:#0077ed}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:radial-gradient(120% 90% at 50% 0%,#1b3d63 0%,#0a1424 55%,#000 100%);
+    color:#f5f5f7;text-align:center;padding:120px 0 0;overflow:hidden;
+  }
+  .hero h1{font-size:88px}
+  .hero .lead{color:#c7c7cc;font-size:24px;max-width:740px}
+  .hero .art{
+    margin:64px auto 0;width:230px;height:230px;position:relative;
+  }
+  .hero .art img{width:100%;height:100%;border-radius:34px;display:block;
+    box-shadow:0 40px 90px rgba(0,110,200,.45)}
+  .hero .art:after{
+    content:"";position:absolute;inset:-90px;border-radius:50%;
+    background:radial-gradient(circle,rgba(65,165,232,.28),transparent 62%);z-index:-1;
+  }
+  .hero .pad{height:110px}
+
+  /* ---------- Stat strip ---------- */
+  .strip{background:#000;color:#f5f5f7;padding:0 0 110px}
+  .strip .g{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .strip .n{font-size:56px;font-weight:700;letter-spacing:-.02em;
+    background:linear-gradient(180deg,#fff,#8ec9f2);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .strip .l{font-size:17px;color:#f5f5f7;margin-top:6px}
+  .strip .s{font-size:13px;color:#86868b;margin-top:2px}
+
+  /* ---------- Tiles ---------- */
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .tile{
+    background:var(--gray);border-radius:22px;padding:46px 40px;text-align:left;
+    transition:transform .35s cubic-bezier(.28,.11,.32,1);
+  }
+  .tile:hover{transform:scale(1.014)}
+  .tile.dark{background:#101317;color:#f5f5f7}
+  .tile.blue{background:linear-gradient(150deg,#0067b6,#0a3f76);color:#fff}
+  .tile h3{font-size:28px;margin-bottom:6px}
+  .tile .cap{font-size:15px;color:var(--sub);letter-spacing:0}
+  .tile.dark .cap,.tile.blue .cap{color:rgba(255,255,255,.72)}
+  .tile ul{list-style:none;margin-top:18px;display:grid;gap:9px}
+  .tile li{font-size:17px;color:#333;padding-left:16px;position:relative;letter-spacing:0}
+  .tile li:before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--jb)}
+  .tile.dark li,.tile.blue li{color:rgba(255,255,255,.85)}
+  .tile.dark li:before,.tile.blue li:before{background:#6bc4f5}
+  .tile .big{font-size:64px;font-weight:700;letter-spacing:-.02em;line-height:1;margin:8px 0 4px}
+
+  .quad{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+  .mini{background:var(--gray);border-radius:20px;padding:34px 28px;text-align:left}
+  .sec.dark .mini{background:#141414}
+  .mini h4{font-size:21px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
+  .sec.dark .mini h4{color:#6bc4f5}
+  .mini p{font-size:15px;color:var(--sub);line-height:1.55;letter-spacing:0}
+  .sec.dark .mini p{color:#a1a1a6}
+
+  /* ---------- AUM bars ---------- */
+  .aum{margin-top:14px;background:#fff;border-radius:22px;padding:46px 40px;text-align:left}
+  .sec.gray .aum{background:#fff}
+  .aum .bar{margin-top:20px}
+  .aum .t{display:flex;justify-content:space-between;font-size:17px;margin-bottom:8px;letter-spacing:0}
+  .aum .t b{font-weight:600}
+  .aum .track{height:6px;background:#e8e8ed;border-radius:99px;overflow:hidden}
+  .aum .fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#0067b6,#41a5e8);
+    width:0;transition:width 1.2s cubic-bezier(.25,.6,.25,1)}
+
+  /* ---------- Timeline ---------- */
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;text-align:left}
+  .tl .it{padding:0 18px;border-top:2px solid var(--line);position:relative}
+  .tl .it:before{content:"";position:absolute;top:-6px;left:18px;width:10px;height:10px;
+    border-radius:50%;background:var(--jb)}
+  .tl .yr{font-size:15px;color:var(--sub);margin-top:20px;letter-spacing:0}
+  .tl .tx{font-size:19px;font-weight:600;margin-top:4px;line-height:1.35;letter-spacing:-.01em}
+  .tl .sm{font-size:15px;color:var(--sub);font-weight:400;margin-top:6px;letter-spacing:0}
+
+  /* ---------- Steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px;text-align:left}
+  .step{background:#fff;border-radius:22px;padding:40px 34px}
+  .step .n{font-size:13px;font-weight:600;color:var(--jb);letter-spacing:.04em}
+  .step h4{font-size:24px;font-weight:700;margin:8px 0 16px;letter-spacing:-.015em}
+  .step ul{list-style:none;display:grid;gap:9px}
+  .step li{font-size:16px;color:var(--sub);line-height:1.5;padding-left:15px;position:relative;letter-spacing:0}
+  .step li:before{content:"";position:absolute;left:0;top:10px;width:4px;height:4px;border-radius:50%;background:#c7c7cc}
+  .gov{margin-top:14px;background:#fff;border-radius:22px;padding:38px 34px;text-align:left;
+       font-size:16px;line-height:1.6;color:var(--sub);letter-spacing:0}
+  .gov b{color:var(--ink);font-weight:600}
+
+  /* ---------- Group ---------- */
+  .grp{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px}
+  .gc{background:#141414;border-radius:20px;padding:32px 20px;text-align:center}
+  .gc.me{background:linear-gradient(160deg,#0067b6,#0a3f76)}
+  .gc h4{font-size:16px;font-weight:600;color:#f5f5f7}
+  .gc .amt{font-size:30px;font-weight:700;letter-spacing:-.02em;margin:10px 0 4px;color:#fff}
+  .gc .d{font-size:13px;color:#a1a1a6;line-height:1.4}
+  .gc.me .d{color:rgba(255,255,255,.8)}
+  .ghd{margin-top:44px;display:flex;justify-content:center;gap:56px;flex-wrap:wrap}
+  .ghd div{font-size:15px;color:#86868b}
+  .ghd b{display:block;font-size:24px;font-weight:600;color:#f5f5f7;margin-top:4px;letter-spacing:-.015em}
+  .gnote{margin-top:34px;font-size:14px;color:#86868b;line-height:1.6;max-width:820px;
+         margin-left:auto;margin-right:auto;letter-spacing:0}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--gray);padding:44px 0;font-size:12px;color:var(--sub);line-height:1.6;letter-spacing:0}
+  footer .disc{padding-bottom:18px;border-bottom:1px solid var(--line)}
+  footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:18px}
+
+  /* ---------- Reveal ---------- */
+  .rv{opacity:0;transform:translateY(38px);transition:opacity .9s ease,transform .9s cubic-bezier(.25,.6,.25,1)}
+  .rv.on{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    h1,.hero h1{font-size:44px}
+    h2{font-size:34px}
+    .lead,.hero .lead{font-size:18px}
+    .tiles,.quad,.tl,.steps,.strip .g,.grp{grid-template-columns:1fr}
+    .tl .it{border-top:none;border-left:2px solid var(--line);padding:0 0 26px 20px}
+    .tl .it:before{top:0;left:-6px}
+    .strip .g{gap:44px}
+    nav .links{display:none}
+    .sec{padding:70px 0}
+    .tile,.step,.aum,.gov{padding:34px 26px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="in">
+    <a class="brand" href="#top">
+      <img src="data:image/png;base64,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" alt="JB자산운용">JB자산운용
+    </a>
+    <div class="links">
+      <a href="#about">회사소개</a>
+      <a href="#history">연혁</a>
+      <a href="#business">사업영역</a>
+      <a href="#philosophy">철학</a>
+      <a href="#risk">리스크관리</a>
+      <a href="#group">JB금융그룹</a>
+      <a href="#contact">문의</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="w">
+    <h1>JB자산운용</h1>
+    <p class="lead">에너지·자원에서 부동산·증권까지.<br>대체투자 시장의 마켓 리더.</p>
+    <div class="links-row">
+      <a class="lnk" href="#business">사업영역 살펴보기</a>
+      <a class="lnk" href="#about">회사 알아보기</a>
+    </div>
+    <div class="art"><img src="data:image/png;base64,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" alt="JB자산운용 CI"></div>
+  </div>
+  <div class="pad"></div>
+</header>
+
+<!-- STATS -->
+<section class="strip">
+  <div class="wide rv">
+    <div class="g">
+      <div><div class="n">6.3조원</div><div class="l">운용자산</div><div class="s">2026년 2분기 기준</div></div>
+      <div><div class="n">277억원</div><div class="l">자본금</div><div class="s">2026년 2분기말</div></div>
+      <div><div class="n">86명</div><div class="l">임직원</div><div class="s">운용본부 7개</div></div>
+      <div><div class="n">2008년</div><div class="l">설립</div><div class="s">2014년 JB금융지주 편입</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec gray" id="about">
+  <div class="wide">
+    <div class="rv">
+      <div class="kicker">회사소개</div>
+      <h2>고객 신뢰와 만족을<br><span class="grad">최상의 가치</span>로.</h2>
+      <p class="lead">설립 이후 자원과 에너지 분야의 투자경험을 바탕으로 해외 대체투자 시장에서 마켓 리더로 자리매김해 왔습니다. 2015년 PEF, 2016년 증권 투자 분야로 영역을 확대해 더 다양한 투자기회를 제공합니다.</p>
+    </div>
+
+    <div class="tiles rv">
+      <div class="tile">
+        <h3>회사 개요</h3>
+        <div class="cap">2026년 2분기 기준</div>
+        <ul>
+          <li>JB자산운용 주식회사 · 대표이사 최원철</li>
+          <li>2008년 3월 설립 · JB금융지주 100% 자회사</li>
+          <li>자본금 277억원 · 수탁고 5조 8,717억원</li>
+          <li>임직원 86명 · 운용본부 7개</li>
+          <li>본점 전주 · 서울지점 운영</li>
+        </ul>
+      </div>
+      <div class="tile blue">
+        <h3>인가 업무영역</h3>
+        <div class="cap">4개 라이선스 + 리츠 AMC</div>
+        <ul>
+          <li>집합투자업 (특별자산 · 부동산 · 관련 증권)</li>
+          <li>투자매매업 및 투자중개업 (집합투자증권)</li>
+          <li>투자일임업</li>
+          <li>투자자문업</li>
+          <li>리츠 AMC 겸영 인가 (2021.7)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="aum rv">
+      <h3>수탁고 구성</h3>
+      <div class="cap" style="font-size:15px;color:var(--sub);margin-top:6px">총 5조 8,717억원</div>
+      <div class="bar"><div class="t"><span>증권</span><b>3조 2,962억원</b></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+      <div class="bar"><div class="t"><span>CR리츠</span><b>1조 1,999억원</b></div><div class="track"><div class="fill" data-w="36.4"></div></div></div>
+      <div class="bar"><div class="t"><span>부동산</span><b>8,788억원</b></div><div class="track"><div class="fill" data-w="26.7"></div></div></div>
+      <div class="bar"><div class="t"><span>특별자산</span><b>4,968억원</b></div><div class="track"><div class="fill" data-w="15.1"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="sec" id="history">
+  <div class="wide">
+    <div class="rv">
+      <div class="kicker">연혁</div>
+      <h2>2008년, 그리고<br>지금까지.</h2>
+    </div>
+    <div class="tl rv">
+      <div class="it">
+        <div class="yr">2008 – 2013</div>
+        <div class="tx">회사설립 “더커자산운용”</div>
+        <div class="sm">2008.3 자산운용업 본인가 취득</div>
+      </div>
+      <div class="it">
+        <div class="yr">2014 – 2016</div>
+        <div class="tx">JB금융지주 자회사 편입</div>
+        <div class="sm">2014.3 상호·CI 변경 “JB자산운용”<br>2015.3 본점 전주 이전, 서울지점 신설<br>2015.12 증권운용본부 신설</div>
+      </div>
+      <div class="it">
+        <div class="yr">2017 – 2019</div>
+        <div class="tx">수탁고 5조원 달성</div>
+        <div class="sm">2018.1 대체투자 시장 입지 확대</div>
+      </div>
+      <div class="it">
+        <div class="yr">2020 – 2026</div>
+        <div class="tx">리츠 AMC 겸영 인가</div>
+        <div class="sm">2021.3 최원철 대표이사 취임<br>2021.7 리츠 AMC 인가<br>2021.11 기업금융본부 신설</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS -->
+<section class="sec gray" id="business">
+  <div class="wide">
+    <div class="rv">
+      <div class="kicker">사업영역</div>
+      <h2>네 개의 축.<br>하나의 <span class="grad">운용 원칙</span>.</h2>
+      <p class="lead">안정적이고 효율적인 운용을 통한 투자수익의 극대화. 고객 Needs에 맞는 다양한 상품 개발과 투자를 제시합니다.</p>
+    </div>
+
+    <div class="tiles rv">
+      <div class="tile dark">
+        <h3>에너지 · 자원</h3>
+        <div class="cap">해외 대체투자의 출발점</div>
+        <ul>
+          <li>석유·가스 개발 및 Midstream</li>
+          <li>신재생에너지</li>
+          <li>해외 자원개발 프로젝트</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <h3>부동산</h3>
+        <div class="cap">수익형 · 개발형 · 대출형</div>
+        <ul>
+          <li>국내외 상업용 빌딩, 해외 재간접펀드</li>
+          <li>산업단지 환경개선, LH 주택 리츠</li>
+          <li>국내외 부동산 대출 및 PF 주선</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <h3>인프라 · 대체자산</h3>
+        <div class="cap">장기 안정형 실물자산</div>
+        <ul>
+          <li>SOC</li>
+          <li>선박 · 항공기</li>
+          <li>발전소 등 인프라 자산</li>
+        </ul>
+      </div>
+      <div class="tile dark">
+        <h3>증권</h3>
+        <div class="cap">2016년 확대한 신규 영역</div>
+        <ul>
+          <li>주식 · 채권 · ETF</li>
+          <li>단기금융상품</li>
+          <li>특화펀드 (Niche 마켓)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quad rv">
+      <div class="mini"><h4>전문성</h4><p>해외 에너지·인프라·자원개발 전문인력 다수 보유.</p></div>
+      <div class="mini"><h4>발굴 능력</h4><p>글로벌 IB 업무 제휴와 운용역의 글로벌 네트워크.</p></div>
+      <div class="mini"><h4>구조 설계</h4><p>법률·세무·기술자문 외부 전문가 Pool 운영.</p></div>
+      <div class="mini"><h4>판매 네트워크</h4><p>국내외 상품 소싱 능력과 폭넓은 판매사 네트워크.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="sec dark" id="philosophy">
+  <div class="wide">
+    <div class="rv">
+      <div class="kicker" style="color:#6bc4f5">경영이념</div>
+      <h2>에너지, 자원, 부동산, 증권.<br>새로운 지평을 열어 드립니다.</h2>
+    </div>
+    <div class="quad rv">
+      <div class="mini"><h4>고객만족</h4><p>최적의 상품으로 고객만족을 최상의 가치로 추구합니다.</p></div>
+      <div class="mini"><h4>전문성 강화</h4><p>전문성 및 조직능력 향상을 위해 최선의 노력을 기울입니다.</p></div>
+      <div class="mini"><h4>윤리의식 제고</h4><p>윤리의식 제고를 통해 선량한 관리자 의무를 준수합니다.</p></div>
+      <div class="mini"><h4>준법 프로세스</h4><p>내부통제제도를 기반으로 준법 투자프로세스를 준수합니다.</p></div>
+    </div>
+
+    <div class="rv" style="margin-top:110px">
+      <div class="kicker" style="color:#6bc4f5">운용철학</div>
+      <h2>Investment Philosophy</h2>
+    </div>
+    <div class="quad rv">
+      <div class="mini"><h4>리스크 관리</h4><p>체계적인 시스템을 통한 최적의 사전적·사후적 리스크 관리.</p></div>
+      <div class="mini"><h4>투명한 경영</h4><p>선량한 자산관리자로서 고객 이익을 최우선시하는 경영활동.</p></div>
+      <div class="mini"><h4>합리적 의사결정</h4><p>개인이 아닌 팀제 운용을 통한 합리적인 의사결정 수립.</p></div>
+      <div class="mini"><h4>일관된 프로세스</h4><p>체계적으로 구축된 준법 프로세스를 준수하여 투자를 결정.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section class="sec gray" id="risk">
+  <div class="wide">
+    <div class="rv">
+      <div class="kicker">리스크 관리</div>
+      <h2>신뢰받는<br>안정적 관리 체계.</h2>
+      <p class="lead">운용 과정에서 발생하는 본질적 위험을 사전적·상시적으로 관리하고, 리스크 조직과 운용 조직 간 투명한 의사소통과 신속한 보고체계를 운영합니다.</p>
+    </div>
+    <div class="steps rv">
+      <div class="step">
+        <div class="n">STEP 01</div>
+        <h4>사전관리</h4>
+        <ul>
+          <li>상품 개발 단계에서 리스크 요인 사전 점검</li>
+          <li>위험 관리 Process 운영</li>
+          <li>투자설명서·규약 등 위험 고지 문서화</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="n">STEP 02</div>
+        <h4>중간관리</h4>
+        <ul>
+          <li>시스템 기반 위험 한도 및 지표 모니터링</li>
+          <li>운용성과 분석</li>
+          <li>거래상대방별 Exposure 모니터링</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="n">STEP 03</div>
+        <h4>사후관리</h4>
+        <ul>
+          <li>위험을 반영한 성과평가</li>
+          <li>리스크관리운영위원회 개최 및 보고</li>
+          <li>매매 관련 이상징후 시 시정 통보</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gov rv">
+      <b>거버넌스 및 내부통제</b> — 이사회 산하에 투자심의위원회, 리스크관리운영위원회, 집합투자재산평가위원회, 감사를 두고 있습니다.
+      준법감시인은 내부통제체계 수립·점검, 준법 교육 및 자문, 신규업무 사전 검토를 수행하며,
+      운용/매매 업무 분리 감시와 Pre-Compliance 시뮬레이션 의무화 등 상시 감시체계를 운영합니다.
+    </div>
+  </div>
+</section>
+
+<!-- GROUP -->
+<section class="sec dark" id="group">
+  <div class="wide">
+    <div class="rv">
+      <div class="kicker" style="color:#6bc4f5">JB금융그룹</div>
+      <h2>젊고 강한<br>강소금융그룹.</h2>
+      <p class="lead">JB자산운용은 JB금융지주의 100% 자회사입니다.</p>
+    </div>
+    <div class="ghd rv">
+      <div>설립<b>2013.7</b></div>
+      <div>회장<b>김기홍</b></div>
+      <div>신용등급<b>AA+</b></div>
+      <div>자본금<b>9,849억원</b></div>
+    </div>
+    <div class="grp rv">
+      <div class="gc"><h4>전북은행</h4><div class="amt">24.7조</div><div class="d">전북지역 M/S 1위</div></div>
+      <div class="gc"><h4>광주은행</h4><div class="amt">33.1조</div><div class="d">광주·전남 M/S 1위</div></div>
+      <div class="gc"><h4>JB우리캐피탈</h4><div class="amt">11.2조</div><div class="d">자동차금융 M/S 2위</div></div>
+      <div class="gc me"><h4>JB자산운용</h4><div class="amt">6.3조</div><div class="d">대체투자시장 마켓 리더</div></div>
+      <div class="gc"><h4>JB벤처캐피탈</h4><div class="amt">5,293억</div><div class="d">스타트업 전문 투자사</div></div>
+    </div>
+    <p class="gnote">국내 5개 자회사, 해외 4개 손자회사, 해외 1개 사무소 (2025년 9월말 기준)<br>
+      프놈펜상업은행(캄보디아) · JB Securities Vietnam(베트남) · JB Capital Myanmar(미얀마) · 프놈펜자산운용(캄보디아) · 베트남 하노이 대표사무소</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="w rv">
+    <div class="kicker">문의</div>
+    <h2>함께할 준비가<br>되어 있습니다.</h2>
+    <p class="lead">딜 소싱, 펀드 설정, 투자 상담 등 무엇이든 문의해 주세요.</p>
+    <div style="margin-top:34px"><a class="btn" href="mailto:contact@jbam.co.kr">문의하기</a></div>
+    <div class="links-row" style="margin-top:22px">
+      <a class="lnk" href="tel:0200000000">02-000-0000</a>
+      <a class="lnk" href="https://www.jbam.co.kr">www.jbam.co.kr</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wide">
+    <div class="disc">
+      집합투자증권은 예금자보호법상 보호되는 상품이 아니며, 운용 결과에 따라 원금 손실이 발생할 수 있고 그 손실은 투자자에게 귀속됩니다.
+      투자 전 (간이)투자설명서를 반드시 읽어보시기 바랍니다. 과거의 운용실적이 미래의 수익률을 보장하지 않습니다.
+    </div>
+    <div class="row">
+      <div>JB자산운용 주식회사 · 대표이사 최원철 · 본점 전라북도 전주시 · www.jbam.co.kr</div>
+      <div>Copyright © 2026 JB Asset Management. 본 페이지는 사내 시연용 샘플입니다.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.fill').forEach(function(f){
+        f.style.width = f.dataset.w + '%';
+      });
+      io.unobserve(e.target);
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
