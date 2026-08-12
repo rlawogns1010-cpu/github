@@ -169,6 +169,24 @@
   footer .disc{padding-bottom:18px;border-bottom:1px solid var(--line)}
   footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:18px}
 
+
+  /* ---------- Market ---------- */
+  .mkt{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px;text-align:left}
+  .mcard{background:var(--gray);border-radius:22px;padding:34px 30px;min-height:186px;
+         display:flex;flex-direction:column;justify-content:space-between}
+  .mcard .ml{font-size:15px;color:var(--sub);letter-spacing:0}
+  .mcard .mv{font-size:42px;font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-top:12px}
+  .mcard .mv .u{font-size:20px;font-weight:600;color:var(--sub);margin-left:4px;letter-spacing:0}
+  .mcard .mc{font-size:16px;font-weight:600;margin-top:8px;letter-spacing:0;color:var(--sub)}
+  .mcard .mc.up{color:#d13438}
+  .mcard .mc.dn{color:#0b62d0}
+  .mcard .md{font-size:13px;color:#86868b;margin-top:16px;letter-spacing:0}
+  .mcard.err .mv{font-size:20px;color:var(--sub);font-weight:600}
+  .mnote{margin-top:26px;font-size:13px;color:#86868b;letter-spacing:0;line-height:1.6}
+  .sk{color:transparent;background:linear-gradient(90deg,#e8e8ed,#f5f5f7,#e8e8ed);
+      background-size:200% 100%;border-radius:8px;animation:sh 1.4s linear infinite}
+  @keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
   /* ---------- Reveal ---------- */
   .rv{opacity:0;transform:translateY(38px);transition:opacity .9s ease,transform .9s cubic-bezier(.25,.6,.25,1)}
   .rv.on{opacity:1;transform:none}
@@ -178,6 +196,9 @@
     h2{font-size:34px}
     .lead,.hero .lead{font-size:18px}
     .tiles,.quad,.tl,.steps,.strip .g,.grp{grid-template-columns:1fr}
+    .mkt{grid-template-columns:1fr 1fr;gap:10px}
+    .mcard{padding:26px 22px;min-height:150px}
+    .mcard .mv{font-size:30px}
     .tl .it{border-top:none;border-left:2px solid var(--line);padding:0 0 26px 20px}
     .tl .it:before{top:0;left:-6px}
     .strip .g{gap:44px}
@@ -229,6 +250,24 @@
       <div><div class="n">86명</div><div class="l">임직원</div><div class="s">운용본부 7개</div></div>
       <div><div class="n">2008년</div><div class="l">설립</div><div class="s">2014년 JB금융지주 편입</div></div>
     </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="sec" id="market">
+  <div class="wide">
+    <div class="rv">
+      <div class="kicker">시장 지표</div>
+      <h2>오늘의 시장.</h2>
+      <p class="lead">한국은행 경제통계시스템(ECOS)에서 제공하는 공식 통계를 자동으로 불러옵니다.</p>
+    </div>
+    <div class="mkt rv" id="mkt">
+      <div class="mcard"><div class="ml">한국은행 기준금리</div><div class="mv sk">0.00</div><div class="md sk">불러오는 중</div></div>
+      <div class="mcard"><div class="ml">원/달러 환율</div><div class="mv sk">0.00</div><div class="md sk">불러오는 중</div></div>
+      <div class="mcard"><div class="ml">KOSPI</div><div class="mv sk">0.00</div><div class="md sk">불러오는 중</div></div>
+      <div class="mcard"><div class="ml">KOSDAQ</div><div class="mv sk">0.00</div><div class="md sk">불러오는 중</div></div>
+    </div>
+    <p class="mnote" id="mkt-note">출처 : 한국은행 경제통계시스템(ECOS) · 일별 통계 기준</p>
   </div>
 </section>
 
@@ -503,6 +542,51 @@
     });
   }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  // ----- 시장 지표 (Netlify Function 경유, API 키는 서버에만 존재) -----
+  (function(){
+    var box = document.getElementById('mkt');
+    var note = document.getElementById('mkt-note');
+    if(!box) return;
+
+    function card(it){
+      if(!it || it.value === null){
+        return '<div class="mcard err"><div class="ml">' + it.label +
+               '</div><div class="mv">일시적으로 조회할 수 없습니다</div><div class="md">잠시 후 다시 시도해 주세요</div></div>';
+      }
+      var cls = it.dir > 0 ? 'up' : (it.dir < 0 ? 'dn' : '');
+      var arrow = it.dir > 0 ? '▲' : (it.dir < 0 ? '▼' : '–');
+      var chg = '';
+      if(it.diff !== null && it.dir !== 0){
+        chg = arrow + ' ' + it.diff + (it.pct ? ' (' + (it.dir > 0 ? '+' : '-') + Math.abs(it.pct) + '%)' : '');
+      } else if(it.kind === 'rate'){
+        chg = '변동 없음';
+      } else {
+        chg = '–';
+      }
+      return '<div class="mcard">' +
+               '<div><div class="ml">' + it.label + '</div>' +
+               '<div class="mv">' + it.value + (it.unit ? '<span class="u">' + it.unit + '</span>' : '') + '</div>' +
+               '<div class="mc ' + cls + '">' + chg + '</div></div>' +
+               '<div class="md">' + it.date + ' 기준</div>' +
+             '</div>';
+    }
+
+    fetch('/.netlify/functions/market')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){
+        box.innerHTML = d.items.map(card).join('');
+        var latest = d.items.filter(function(i){ return i.date; }).map(function(i){ return i.date; }).sort().pop();
+        if(latest) note.textContent = '출처 : 한국은행 경제통계시스템(ECOS) · ' + latest + ' 기준 일별 통계';
+      })
+      .catch(function(){
+        box.innerHTML = '<div class="mcard err" style="grid-column:1/-1;min-height:0">' +
+          '<div class="ml">시장 지표</div>' +
+          '<div class="mv">현재 지표를 불러올 수 없습니다</div>' +
+          '<div class="md">배포 환경에서만 조회됩니다 (로컬 파일로 열람 시 미표시)</div></div>';
+      });
+  })();
+
 </script>
 
 </body>

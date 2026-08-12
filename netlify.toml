@@ -1,0 +1,20 @@
+# Netlify 배포 설정
+# 정적 HTML 사이트이므로 빌드 과정은 없습니다.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# 보안 헤더
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# 시장 지표 API 응답 캐싱 (30분)
+[[headers]]
+  for = "/.netlify/functions/market"
+  [headers.values]
+    Cache-Control = "public, max-age=1800"
