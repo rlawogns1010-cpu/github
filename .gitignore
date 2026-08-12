@@ -13,6 +13,10 @@
 !netlify/functions/
 !netlify/functions/*.js
 
+# 구글 Apps Script (구글 시트에 붙여넣는 코드 보관용)
+!apps-script/
+!apps-script/*.gs
+
 # 절대 커밋 금지 — API 키가 들어가는 파일
 .env
 .env.*

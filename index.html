@@ -187,6 +187,41 @@
       background-size:200% 100%;border-radius:8px;animation:sh 1.4s linear infinite}
   @keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
+
+  /* ---------- Form ---------- */
+  .form{max-width:680px;margin:44px auto 0;text-align:left}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .fld{margin-bottom:14px}
+  .fld label{display:block;font-size:14px;color:var(--sub);margin-bottom:7px;letter-spacing:0}
+  .fld label .req{color:#d13438;margin-left:3px}
+  .fld input,.fld select,.fld textarea{
+    width:100%;font-family:inherit;font-size:17px;color:var(--ink);letter-spacing:0;
+    padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff;
+    transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none;
+  }
+  .fld textarea{min-height:150px;resize:vertical;line-height:1.55}
+  .fld select{background-repeat:no-repeat;background-position:right 16px center}
+  .fld input:focus,.fld select:focus,.fld textarea:focus{
+    outline:none;border-color:var(--link);box-shadow:0 0 0 4px rgba(0,113,227,.15)}
+  .fld input::placeholder,.fld textarea::placeholder{color:#b0b0b6}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .agree{background:var(--gray);border-radius:14px;padding:20px 22px;margin:6px 0 20px}
+  .agree p{font-size:13px;color:var(--sub);line-height:1.6;letter-spacing:0;margin-bottom:14px}
+  .agree .chk{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+  .agree input{width:19px;height:19px;margin-top:2px;flex:none;accent-color:var(--link);cursor:pointer}
+  .agree .chk span{font-size:15px;letter-spacing:0}
+
+  .form .btn{border:0;cursor:pointer;font-family:inherit;width:100%;padding:15px 24px}
+  .form .btn:disabled{background:#b6d4f5;cursor:default}
+  .fmsg{margin-top:16px;font-size:15px;letter-spacing:0;text-align:center;min-height:22px}
+  .fmsg.ok{color:#1a7f37}
+  .fmsg.no{color:#d13438}
+  .fdone{background:var(--gray);border-radius:22px;padding:52px 40px;text-align:center;margin-top:44px}
+  .fdone .ic{font-size:44px;line-height:1}
+  .fdone h3{font-size:26px;margin:14px 0 8px}
+  .fdone p{font-size:17px;color:var(--sub);letter-spacing:0}
+
   /* ---------- Reveal ---------- */
   .rv{opacity:0;transform:translateY(38px);transition:opacity .9s ease,transform .9s cubic-bezier(.25,.6,.25,1)}
   .rv.on{opacity:1;transform:none}
@@ -197,6 +232,7 @@
     .lead,.hero .lead{font-size:18px}
     .tiles,.quad,.tl,.steps,.strip .g,.grp{grid-template-columns:1fr}
     .mkt{grid-template-columns:1fr 1fr;gap:10px}
+    .frow{grid-template-columns:1fr}
     .mcard{padding:26px 22px;min-height:150px}
     .mcard .mv{font-size:30px}
     .tl .it{border-top:none;border-left:2px solid var(--line);padding:0 0 26px 20px}
@@ -505,12 +541,76 @@
 
 <!-- CONTACT -->
 <section class="sec" id="contact">
-  <div class="w rv">
-    <div class="kicker">문의</div>
-    <h2>함께할 준비가<br>되어 있습니다.</h2>
-    <p class="lead">딜 소싱, 펀드 설정, 투자 상담 등 무엇이든 문의해 주세요.</p>
-    <div style="margin-top:34px"><a class="btn" href="mailto:contact@jbam.co.kr">문의하기</a></div>
-    <div class="links-row" style="margin-top:22px">
+  <div class="wide">
+    <div class="rv">
+      <div class="kicker">문의</div>
+      <h2>함께할 준비가<br>되어 있습니다.</h2>
+      <p class="lead">딜 소싱, 펀드 설정, 투자 상담 등 무엇이든 문의해 주세요.<br>영업일 기준 1~2일 내에 담당자가 회신드립니다.</p>
+    </div>
+
+    <form class="form rv" id="cform" novalidate>
+      <div class="frow">
+        <div class="fld">
+          <label for="f-name">성함<span class="req">*</span></label>
+          <input id="f-name" name="name" type="text" placeholder="홍길동" required maxlength="100" autocomplete="name">
+        </div>
+        <div class="fld">
+          <label for="f-company">회사 / 기관</label>
+          <input id="f-company" name="company" type="text" placeholder="○○자산운용" maxlength="100" autocomplete="organization">
+        </div>
+      </div>
+
+      <div class="frow">
+        <div class="fld">
+          <label for="f-email">이메일<span class="req">*</span></label>
+          <input id="f-email" name="email" type="email" placeholder="name@company.co.kr" required maxlength="200" autocomplete="email">
+        </div>
+        <div class="fld">
+          <label for="f-phone">연락처</label>
+          <input id="f-phone" name="phone" type="tel" placeholder="010-0000-0000" maxlength="50" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="fld">
+        <label for="f-type">문의 유형</label>
+        <select id="f-type" name="type">
+          <option value="투자 상담">투자 상담</option>
+          <option value="딜 소싱 / 제휴">딜 소싱 / 제휴</option>
+          <option value="펀드 설정">펀드 설정</option>
+          <option value="채용">채용</option>
+          <option value="기타">기타</option>
+        </select>
+      </div>
+
+      <div class="fld">
+        <label for="f-message">문의 내용<span class="req">*</span></label>
+        <textarea id="f-message" name="message" placeholder="문의하실 내용을 자유롭게 작성해 주세요." required maxlength="5000"></textarea>
+      </div>
+
+      <div class="hp" aria-hidden="true">
+        <label for="f-website">Website</label>
+        <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="agree">
+        <p>
+          <b>개인정보 수집·이용 동의</b><br>
+          수집 항목 : 성함, 회사/기관, 이메일, 연락처, 문의내용<br>
+          이용 목적 : 문의 접수 및 답변 회신<br>
+          보유 기간 : 문의 처리 완료 후 3년<br>
+          동의를 거부하실 수 있으나, 이 경우 문의 접수가 제한됩니다.
+        </p>
+        <label class="chk">
+          <input id="f-agree" name="agree" type="checkbox" required>
+          <span>개인정보 수집·이용에 동의합니다.<span class="req">*</span></span>
+        </label>
+      </div>
+
+      <button class="btn" type="submit" id="f-submit">문의 보내기</button>
+      <div class="fmsg" id="f-msg"></div>
+    </form>
+
+    <div class="links-row" style="margin-top:34px">
       <a class="lnk" href="tel:0200000000">02-000-0000</a>
       <a class="lnk" href="https://www.jbam.co.kr">www.jbam.co.kr</a>
     </div>
@@ -542,6 +642,70 @@
     });
   }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  // ----- 문의 폼 (Netlify Function 경유 -> 구글 시트 저장) -----
+  (function(){
+    var form = document.getElementById('cform');
+    if(!form) return;
+    var btn = document.getElementById('f-submit');
+    var msg = document.getElementById('f-msg');
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      msg.className = 'fmsg';
+      msg.textContent = '';
+
+      var data = {
+        name:    form.name.value.trim(),
+        company: form.company.value.trim(),
+        email:   form.email.value.trim(),
+        phone:   form.phone.value.trim(),
+        type:    form.type.value,
+        message: form.message.value.trim(),
+        website: form.website.value,
+        agree:   document.getElementById('f-agree').checked
+      };
+
+      if(!data.name || !data.email || !data.message){
+        msg.className = 'fmsg no';
+        msg.textContent = '\uC131\uD568, \uC774\uBA54\uC77C, \uBB38\uC758 \uB0B4\uC6A9\uC744 \uC785\uB825\uD574 \uC8FC\uC138\uC694.';
+        return;
+      }
+      if(!data.agree){
+        msg.className = 'fmsg no';
+        msg.textContent = '\uAC1C\uC778\uC815\uBCF4 \uC218\uC9D1\u00B7\uC774\uC6A9\uC5D0 \uB3D9\uC758\uD574 \uC8FC\uC138\uC694.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = '\uBCF4\uB0B4\uB294 \uC911...';
+
+      fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, j: j }; }); })
+      .then(function(res){
+        if(!res.ok || !res.j.ok) throw new Error(res.j.error || '\uC811\uC218 \uC2E4\uD328');
+        form.outerHTML =
+          '<div class="fdone">' +
+            '<div class="ic">\u2709\uFE0F</div>' +
+            '<h3>\uBB38\uC758\uAC00 \uC811\uC218\uB418\uC5C8\uC2B5\uB2C8\uB2E4</h3>' +
+            '<p>\uC601\uC5C5\uC77C \uAE30\uC900 1~2\uC77C \uB0B4\uC5D0 \uB2F4\uB2F9\uC790\uAC00 \uD68C\uC2E0\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4.</p>' +
+          '</div>';
+      })
+      .catch(function(err){
+        btn.disabled = false;
+        btn.textContent = '\uBB38\uC758 \uBCF4\uB0B4\uAE30';
+        msg.className = 'fmsg no';
+        msg.textContent = err.message === 'Failed to fetch'
+          ? '\uBC30\uD3EC \uD658\uACBD\uC5D0\uC11C\uB9CC \uC804\uC1A1\uB429\uB2C8\uB2E4. (\uB85C\uCEEC \uD30C\uC77C \uC5F4\uB78C \uC911)'
+          : err.message;
+      });
+    });
+  })();
+
 
   // ----- 시장 지표 (Netlify Function 경유, API 키는 서버에만 존재) -----
   (function(){
