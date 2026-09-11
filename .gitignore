@@ -23,14 +23,3 @@
 .netlify/
 node_modules/
 
-# 도부일일호프 QR 갤러리
-!gallery/
-!gallery/index.html
-!gallery/images.json
-!gallery/images/
-!gallery/images/*.jpg
-!gallery/images/*.png
-
-# 갤러리/QR 생성 스크립트
-!tools/
-!tools/*.py
